@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>今週のタロット運勢（ふたご座）</title>
+    <style>
+        body {
+            background: radial-gradient(circle at 35% 45%, #2b3e63 0%, #1c2740 55%, #121a29 100%);
+            font-family: 'Yu Mincho', 'Hiragino Mincho Pro', serif;
+            color: #f2f5f9;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 34rem;
+            margin: 2.8rem auto;
+            backdrop-filter: blur(18px) saturate(160%);
+            background: rgba(58,72,102,0.50);
+            border-radius: 1.6rem;
+            box-shadow: 0 20px 42px -14px rgba(0,0,0,0.55), 0 0 0 1px rgba(255,255,255,0.10);
+            padding: 2.6rem 2.4rem 2.2rem 2.4rem;
+            border: 1px solid rgba(255,255,255,0.20);
+        }
+        h1 {
+            font-size: 2.1em;
+            color: #ffe29b;
+            text-align: center;
+            margin-bottom: 1.2rem;
+            letter-spacing: 0.18rem;
+            text-shadow: 0 0 14px #bc7af2, 0 2px 8px #2b3e63;
+        }
+        .subtitle {
+            text-align: center;
+            font-size: 1.1em;
+            color: #bc7af2;
+            margin-bottom: 2.2rem;
+        }
+        .tarot-card-area {
+            display: flex;
+            justify-content: center;
+            margin: 2rem 0 2rem 0;
+        }
+        .tarot-card {
+            background: linear-gradient(135deg, #2b3e63 60%, #bc7af2 100%);
+            border-radius: 1.2rem;
+            box-shadow: 0 8px 32px -8px #bc7af2, 0 0 0 2px #ffe29b;
+            border: 2.5px solid #ffe29b;
+            padding: 2.2rem 1.6rem 1.6rem 1.6rem;
+            min-width: 220px;
+            max-width: 320px;
+            text-align: center;
+            color: #ffe29b;
+            font-family: 'Yu Mincho', 'Hiragino Mincho Pro', serif;
+            position: relative;
+            animation: tarotFadeIn 1.2s ease;
+        }
+        .tarot-card-title {
+            font-size: 1.6em;
+            font-weight: bold;
+            margin-bottom: 1.1rem;
+            letter-spacing: 0.12em;
+            color: #ffe29b;
+            text-shadow: 0 0 12px #bc7af2, 0 2px 8px #2b3e63;
+        }
+        .tarot-card-meaning {
+            font-size: 1.08em;
+            color: #f2f5f9;
+            background: rgba(255,255,255,0.08);
+            border-radius: 0.7rem;
+            padding: 0.7rem 0.5rem;
+            margin-top: 0.5rem;
+            box-shadow: 0 2px 8px -2px #bc7af2;
+        }
+        .weekly-message {
+            margin-top: 2.2rem;
+            font-size: 1.15em;
+            color: #ffe29b;
+            background: linear-gradient(135deg, rgba(255,226,155,0.18), rgba(188,122,242,0.10));
+            border-radius: 1.1rem;
+            padding: 1.2rem 1rem;
+            text-align: center;
+            box-shadow: 0 0 18px 2px rgba(188,122,242,0.10);
+        }
+        @keyframes tarotFadeIn {
+            0% { opacity: 0; transform: scale(0.95) translateY(18px); }
+            60% { opacity: 0.7; transform: scale(1.03) translateY(-4px); }
+            100% { opacity: 1; transform: scale(1) translateY(0); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>今週のタロット運勢</h1>
+        <div class="subtitle">ふたご座（Gemini）｜ 2025年10月27日〜11月2日</div>
+        <div class="tarot-card-area">
+            <div class="tarot-card">
+                <div class="tarot-card-title">{{ tarot_card }}</div>
+                <div class="tarot-card-meaning">{{ tarot_meaning }}</div>
+                    <div class="shiitake-advice">{{ shiitake_advice }}</div>
+            </div>
+        </div>
+        <div class="weekly-message">
+            {{ weekly_message }}
+        </div>
+    </div>
+</body>
+</html>

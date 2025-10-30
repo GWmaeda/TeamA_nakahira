@@ -111,16 +111,63 @@
             background:#ffe29b; color:#532b00; border:none; padding:0.6rem 1.4rem; border-radius:1.2rem; cursor:pointer; font-size:0.88rem; box-shadow:0 4px 14px -4px rgba(255,226,155,0.55); transition:transform .25s, box-shadow .3s; display:inline-block;
         }
         .premium-btn:hover { transform:translateY(-3px); box-shadow:0 8px 22px -6px rgba(255,215,122,0.65); }
+            /* タロット占い用デザイン追加 */
+            .tarot-poem {
+                background: linear-gradient(135deg, rgba(188,122,242,0.18), rgba(255,226,155,0.10));
+                border: 1.5px solid #bc7af2;
+                box-shadow: 0 0 18px 2px rgba(188,122,242,0.18);
+            }
+            .tarot-card-area {
+                display: flex;
+                justify-content: center;
+                margin: 2rem 0 2rem 0;
+            }
+            .tarot-card {
+                background: linear-gradient(135deg, #2b3e63 60%, #bc7af2 100%);
+                border-radius: 1.2rem;
+                box-shadow: 0 8px 32px -8px #bc7af2, 0 0 0 2px #ffe29b;
+                border: 2.5px solid #ffe29b;
+                padding: 2.2rem 1.6rem 1.6rem 1.6rem;
+                min-width: 220px;
+                max-width: 320px;
+                text-align: center;
+                color: #ffe29b;
+                font-family: 'Yu Mincho', 'Hiragino Mincho Pro', serif;
+                position: relative;
+                animation: tarotFadeIn 1.2s ease;
+            }
+            .tarot-card-title {
+                font-size: 1.6em;
+                font-weight: bold;
+                margin-bottom: 1.1rem;
+                letter-spacing: 0.12em;
+                color: #ffe29b;
+                text-shadow: 0 0 12px #bc7af2, 0 2px 8px #2b3e63;
+            }
+            .tarot-card-meaning {
+                font-size: 1.08em;
+                color: #f2f5f9;
+                background: rgba(255,255,255,0.08);
+                border-radius: 0.7rem;
+                padding: 0.7rem 0.5rem;
+                margin-top: 0.5rem;
+                box-shadow: 0 2px 8px -2px #bc7af2;
+            }
+            @keyframes tarotFadeIn {
+                0% { opacity: 0; transform: scale(0.95) translateY(18px); }
+                60% { opacity: 0.7; transform: scale(1.03) translateY(-4px); }
+                100% { opacity: 1; transform: scale(1) translateY(0); }
+            }
     </style>
 </head>
 <body>
     <div class="container">
     <h1>開運おみくじ</h1>
-        <div class="poem">
-            人生は選択の連続。<br>
-            迷いの先に、あなたの運命が待っている。<br>
-            今日の一歩が、明日の輝きとなるでしょう。<br>
-        </div>
+            <div class="poem tarot-poem">
+                <span style="font-size:1.2em; color:#bc7af2; font-weight:bold;">タロット占い</span><br>
+                <span style="font-size:1em; color:#ffe29b;">神秘の扉を開き、運命のメッセージを受け取りましょう。</span><br>
+                <span style="font-size:0.95em; color:#f2f5f9;">今日の一枚が、あなたの未来を照らします。</span>
+            </div>
         {% if fortune %}
         <div class="fortune-headline">
             今日の運勢： <span style="font-weight:bold;">{{ fortune }}</span>
@@ -153,6 +200,14 @@
                 </div>
             </div>
             <div style="text-align:center; margin-bottom:1.2rem; color:#ff9800; font-size:1em;">もう一度占いますか？</div>
+                    {% if tarot_card %}
+                    <div class="tarot-card-area">
+                        <div class="tarot-card">
+                            <div class="tarot-card-title">{{ tarot_card }}</div>
+                            <div class="tarot-card-meaning">{{ tarot_meaning }}</div>
+                        </div>
+                    </div>
+                    {% endif %}
         {% else %}
             <div style="text-align:center; margin-bottom:1.2rem; font-size:0.9em; color:#e8edf5;">今日の運勢を占い、静かな星の瞬きに耳を澄ましてみましょう。</div>
         {% endif %}
