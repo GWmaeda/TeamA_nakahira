@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>開運おみくじ</title>
+    <style>
+        body {
+            background: radial-gradient(circle at 35% 45%, #2b3e63 0%, #1c2740 55%, #121a29 100%);
+            background-attachment: fixed;
+            font-family: 'Yu Mincho', 'Hiragino Mincho Pro', serif;
+            color: #f2f5f9;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+        }
+        body:before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: repeating-radial-gradient(circle at 20% 30%, rgba(255,255,255,0.15) 0, rgba(255,255,255,0.15) 1px, transparent 2px), repeating-radial-gradient(circle at 80% 70%, rgba(255,255,255,0.12) 0, rgba(255,255,255,0.12) 1px, transparent 3px);
+            pointer-events: none;
+            mix-blend-mode: screen;
+            opacity: 0.25;
+        }
+        .container {
+            max-width: 34rem;
+            margin: 2.8rem auto;
+            backdrop-filter: blur(18px) saturate(160%);
+            background: rgba(58,72,102,0.50);
+            border-radius: 1.6rem;
+            box-shadow: 0 20px 42px -14px rgba(0,0,0,0.55), 0 0 0 1px rgba(255,255,255,0.10);
+            padding: 2.6rem 2.4rem 2.2rem 2.4rem;
+            border: 1px solid rgba(255,255,255,0.20);
+        }
+        h1 {
+            font-size: 2.2em;
+            color: #ffe29b;
+            text-align: center;
+            margin-bottom: 0.9rem;
+            letter-spacing: 0.18rem;
+            text-shadow: 0 0 14px rgba(255,226,155,0.55), 0 2px 8px rgba(0,0,0,0.4);
+        }
+        .poem {
+            font-size: 0.98em;
+            color: #f4f8ff;
+            text-align: center;
+            margin-bottom: 1.9rem;
+            font-style: italic;
+            background: linear-gradient(135deg, rgba(255,255,255,0.20), rgba(255,255,255,0.07));
+            border-radius: 0.9rem;
+            padding: 1rem 0.9rem;
+            border: 1px solid rgba(255,255,255,0.22);
+        }
+        .fortune-headline {
+            text-align: center;
+            margin-bottom: 1.1rem;
+            font-size: 1.1em;
+            font-weight: 600;
+            color: #ffe29b;
+            letter-spacing: 0.08rem;
+        }
+        .result {
+            font-size: 1.32em;
+            font-weight: 600;
+            text-align: center;
+            margin: 1.1rem 0 1.2rem 0;
+            letter-spacing: 0.11rem;
+            padding: 1.15rem 0.6rem 1.2rem;
+            background: linear-gradient(135deg, rgba(255,255,255,0.10), rgba(255,255,255,0.03));
+            border-radius: 1.1rem;
+            box-shadow: 0 10px 26px -10px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,255,255,0.12);
+            border: 1px solid rgba(255,226,155,0.40);
+            opacity: 0;
+            animation: fadeInResult 1.2s ease forwards;
+            position: relative;
+        }
+        @keyframes fadeInResult {
+            0% { opacity: 0; transform: translateY(18px) scale(0.97); }
+            60% { opacity: 0.7; transform: translateY(-4px) scale(1.015); }
+            100% { opacity: 1; transform: translateY(0) scale(1); }
+        }
+        .result-atari { border-color: rgba(255,215,122,0.6); }
+        .result-hazure { border-color: rgba(255,110,110,0.55); }
+        .result-mouichido { border-color: rgba(255,187,110,0.50); }
+        .result-sankasho { border-color: rgba(255,140,110,0.50); }
+        .button-area { text-align: center; }
+        .fortune-btn {
+            padding: 0.9rem 2.6rem;
+            font-size: 1.07em;
+            background: linear-gradient(90deg,#7a57e0 0%, #bc7af2 50%, #ff9fbe 100%);
+            color: #fff;
+            border: 1px solid rgba(255,255,255,0.35);
+            border-radius: 2rem;
+            box-shadow: 0 6px 18px -6px rgba(176,110,232,0.5);
+            cursor: pointer;
+            transition: box-shadow 0.35s, transform 0.25s, filter 0.25s;
+            position: relative;
+        }
+        .fortune-btn:focus { outline: 2px solid #ffd77a; outline-offset: 4px; }
+        .fortune-btn:hover {
+            box-shadow: 0 10px 26px -6px rgba(176,110,232,0.65), 0 0 0 2px rgba(255,255,255,0.2);
+            transform: translateY(-3px);
+            filter: brightness(1.08);
+        }
+        .premium-note {
+            text-align:center; font-size:0.78rem; color:#ffe29b; margin:0.9rem 0 0.7rem;
+        }
+        .premium-btn {
+            background:#ffe29b; color:#532b00; border:none; padding:0.6rem 1.4rem; border-radius:1.2rem; cursor:pointer; font-size:0.88rem; box-shadow:0 4px 14px -4px rgba(255,226,155,0.55); transition:transform .25s, box-shadow .3s; display:inline-block;
+        }
+        .premium-btn:hover { transform:translateY(-3px); box-shadow:0 8px 22px -6px rgba(255,215,122,0.65); }
+    </style>
+</head>
+<body>
+    <div class="container">
+    <h1>開運おみくじ</h1>
+        <div class="poem">
+            人生は選択の連続。<br>
+            迷いの先に、あなたの運命が待っている。<br>
+            今日の一歩が、明日の輝きとなるでしょう。<br>
+        </div>
+        {% if fortune %}
+        <div class="fortune-headline">
+            今日の運勢： <span style="font-weight:bold;">{{ fortune }}</span>
+        </div>
+        {% endif %}
+        {% if result %}
+            {% set result_class = "result" %}
+            {% if result == "アタリ！" %}
+                {% set result_class = "result result-atari" %}
+            {% elif result == "ハズレ" %}
+                {% set result_class = "result result-hazure" %}
+            {% elif result == "もう一度" %}
+                {% set result_class = "result result-mouichido" %}
+            {% elif result == "参加賞" %}
+                {% set result_class = "result result-sankasho" %}
+            {% endif %}
+            <div class="{{ result_class }}">
+                <div>
+                    {% if result == "アタリ！" %}
+                        <span style="color:#ffd77a;">今日のあなたは絶好調！<br>新しい一歩を踏み出すチャンスです。</span>
+                    {% elif result == "ハズレ" %}
+                        <span style="color:#ff6e6e;">運気は穏やか。<br>焦らず、心に余裕を持ちましょう。</span>
+                    {% elif result == "もう一度" %}
+                        <span style="color:#ffbb6e;">運命はまだ巡っています。<br>もう一度チャレンジ！</span>
+                    {% elif result == "参加賞" %}
+                        <span style="color:#ff8c6e;">小さな幸せがあなたを包みます。<br>感謝の気持ちを忘れずに。</span>
+                    {% else %}
+                        <span>{{ result }}</span>
+                    {% endif %}
+                </div>
+            </div>
+            <div style="text-align:center; margin-bottom:1.2rem; color:#ff9800; font-size:1em;">もう一度占いますか？</div>
+        {% else %}
+            <div style="text-align:center; margin-bottom:1.2rem; font-size:0.9em; color:#e8edf5;">今日の運勢を占い、静かな星の瞬きに耳を澄ましてみましょう。</div>
+        {% endif %}
+        <form method="POST" action="/">
+            <div class="button-area">
+                <button type="submit" class="fortune-btn">無料で占う</button>
+            </div>
+        </form>
+        {% if result %}
+        <div class="premium-note">
+            ※ 詳しい運勢（恋愛 / 仕事 / 金運 / 対人運）やラッキーカラー・ラッキーアクションは<br>
+            <span style="font-weight:bold;">プレミアム会員</span>になると閲覧できます。
+        </div>
+        <div style="text-align:center; margin-bottom:0.6rem;">
+            <button type="button" class="premium-btn" onclick="alert('現在プレミアム会員登録機能は準備中です。')">プレミアム会員になる</button>
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
