@@ -5,9 +5,9 @@
     <title>今週のタロット運勢（ふたご座）</title>
     <style>
         body {
-            background: radial-gradient(circle at 35% 45%, #2b3e63 0%, #1c2740 55%, #121a29 100%);
+            background: radial-gradient(circle at 35% 45%, #b7a6d2 0%, #a3c7d6 55%, #f7e7c5 100%);
             font-family: 'Yu Mincho', 'Hiragino Mincho Pro', serif;
-            color: #f2f5f9;
+            color: #6d5e7a;
             margin: 0;
             padding: 0;
             min-height: 100vh;
@@ -16,24 +16,24 @@
             max-width: 34rem;
             margin: 2.8rem auto;
             backdrop-filter: blur(18px) saturate(160%);
-            background: rgba(58,72,102,0.50);
+            background: linear-gradient(135deg, #f7e7c5 60%, #b7a6d2 100%);
             border-radius: 1.6rem;
-            box-shadow: 0 20px 42px -14px rgba(0,0,0,0.55), 0 0 0 1px rgba(255,255,255,0.10);
+            box-shadow: 0 20px 42px -14px rgba(183,166,210,0.25), 0 0 0 1px rgba(163,199,214,0.10);
             padding: 2.6rem 2.4rem 2.2rem 2.4rem;
-            border: 1px solid rgba(255,255,255,0.20);
+            border: 1px solid #b7a6d2;
         }
         h1 {
             font-size: 2.1em;
-            color: #ffe29b;
+            color: #a37fc9;
             text-align: center;
             margin-bottom: 1.2rem;
             letter-spacing: 0.18rem;
-            text-shadow: 0 0 14px #bc7af2, 0 2px 8px #2b3e63;
+            text-shadow: 0 0 14px #b7a6d2, 0 2px 8px #f7e7c5;
         }
         .subtitle {
             text-align: center;
             font-size: 1.1em;
-            color: #bc7af2;
+            color: #7ad1b4;
             margin-bottom: 2.2rem;
         }
         .tarot-card-area {
@@ -42,15 +42,15 @@
             margin: 2rem 0 2rem 0;
         }
         .tarot-card {
-            background: linear-gradient(135deg, #2b3e63 60%, #bc7af2 100%);
+            background: linear-gradient(135deg, #f7e7c5 60%, #b7a6d2 100%);
             border-radius: 1.2rem;
-            box-shadow: 0 8px 32px -8px #bc7af2, 0 0 0 2px #ffe29b;
-            border: 2.5px solid #ffe29b;
+            box-shadow: 0 8px 32px -8px #a3c7d6, 0 0 0 2px #a37fc9;
+            border: 2.5px solid #a37fc9;
             padding: 2.2rem 1.6rem 1.6rem 1.6rem;
             min-width: 220px;
             max-width: 320px;
             text-align: center;
-            color: #ffe29b;
+            color: #6d5e7a;
             font-family: 'Yu Mincho', 'Hiragino Mincho Pro', serif;
             position: relative;
             animation: tarotFadeIn 1.2s ease;
@@ -60,27 +60,37 @@
             font-weight: bold;
             margin-bottom: 1.1rem;
             letter-spacing: 0.12em;
-            color: #ffe29b;
-            text-shadow: 0 0 12px #bc7af2, 0 2px 8px #2b3e63;
+            color: #a37fc9;
+            text-shadow: 0 0 12px #b7a6d2, 0 2px 8px #f7e7c5;
         }
         .tarot-card-meaning {
             font-size: 1.08em;
-            color: #f2f5f9;
-            background: rgba(255,255,255,0.08);
+            color: #7ad1b4;
+            background: linear-gradient(135deg, rgba(122,209,180,0.12), rgba(255,255,255,0.08));
             border-radius: 0.7rem;
             padding: 0.7rem 0.5rem;
             margin-top: 0.5rem;
-            box-shadow: 0 2px 8px -2px #bc7af2;
+            box-shadow: 0 2px 8px -2px #7ad1b4;
         }
         .weekly-message {
             margin-top: 2.2rem;
             font-size: 1.15em;
-            color: #ffe29b;
-            background: linear-gradient(135deg, rgba(255,226,155,0.18), rgba(188,122,242,0.10));
+            color: #a37fc9;
+            background: linear-gradient(135deg, #f7e7c5 60%, #b7a6d2 100%);
             border-radius: 1.1rem;
             padding: 1.2rem 1rem;
             text-align: center;
-            box-shadow: 0 0 18px 2px rgba(188,122,242,0.10);
+            box-shadow: 0 0 18px 2px rgba(183,166,210,0.10);
+        }
+        .shiitake-advice {
+            font-size: 1em;
+            color: #a37fc9;
+            background: linear-gradient(135deg, #e3d6f7 60%, #b7a6d2 100%);
+            border-radius: 0.7rem;
+            padding: 0.7rem 0.5rem;
+            margin-top: 1.1rem;
+            box-shadow: 0 2px 8px -2px #b7a6d2;
+            font-style: italic;
         }
         @keyframes tarotFadeIn {
             0% { opacity: 0; transform: scale(0.95) translateY(18px); }
